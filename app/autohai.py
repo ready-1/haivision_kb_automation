@@ -3,7 +3,7 @@ import requests
 import toml
 from pprint import pprint
 
-IPADDRESS = "192.168.128.71"
+IPADDRESS = "192.168.130.83"  # "192.168.128.71"
 
 
 def get_config():
@@ -61,9 +61,23 @@ def encoder_create_channel(ip_address, session_id, channel_name):
     return response.text.encode('utf8')
 
 
+def encoder_delete_channel(ip_address, session_id, channel_name):
+    url = "https://" + ip_address + ":1080/ecs/channels/" + channel_name + ".json"
+    channel = {"channel": {"label": channel_name}}
+    payload = json.dumps(channel)
+    headers = {
+        'Authorization': session_id,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request(
+        "DELETE", url, headers=headers, data=payload, verify=False)
+    print(response.text.encode('utf8'))
+
+
 session_id = encoder_login(IPADDRESS, "haiadmin", "manager")
 
 
 # encoder_logout(IPADDRESS, session_id)
 
-encoder_create_channel(IPADDRESS, session_id, "Test_Channel_From_API")
+# encoder_create_channel(IPADDRESS, session_id, "Test_Channel_From_API")
+encoder_delete_channel(IPADDRESS, session_id, "API_Channel")
