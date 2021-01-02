@@ -46,5 +46,23 @@ def encoder_logout(ip_address, session_id):
     return True
 
 
+def encoder_create_channel(ip_address, session_id, channel_name):
+    url = "https://" + ip_address + ":1080/ecs/channels.json"
+
+    channel = {"channel": {"label": channel_name}}
+    payload = json.dumps(channel)
+    headers = {
+        'Authorization': session_id,
+        'Content-Type': 'application/json'
+    }
+    response = requests.request(
+        "POST", url, headers=headers, data=payload, verify=False)
+    print(response.text.encode('utf8'))
+
+
 session_id = encoder_login("192.168.130.83", "haiadmin", "manager")
-encoder_logout("192.168.130.83", session_id)
+
+
+# encoder_logout("192.168.130.83", session_id)
+
+encoder_create_channel("192.168.130.83", session_id, "Test_Channel_From_API")
