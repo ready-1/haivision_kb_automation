@@ -1,0 +1,26 @@
+[encoders]
+    [encoders.primary]
+        ip_address = "192.168.130.83"
+        username = "haiadmin"
+        password = "manager"
+        push = True
+    [encoders.backup]
+        ip_address = "192.168.128.71"
+        username = "haiadmin"
+        password = "manager"
+        push = False
+
+[channel]
+name = "Kaltura Test Saturday"
+
+[kaltura_primary]
+rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
+stream_name = "1_4rcs1evu_1"
+
+[kaltura_backup]
+rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
+stream_name = "1_4rcs1evu_1"
+
+
+
+
