@@ -3,24 +3,24 @@
         ip_address = "192.168.130.83"
         username = "haiadmin"
         password = "manager"
-        push = True
+        push = true
     [encoders.backup]
         ip_address = "192.168.128.71"
         username = "haiadmin"
         password = "manager"
-        push = False
+        push = false
 
 [channel]
 name = "Kaltura Test Saturday"
-
-[kaltura_primary]
-rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
-stream_name = "1_4rcs1evu_1"
-
-[kaltura_backup]
-rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
-stream_name = "1_4rcs1evu_1"
-
+template_filename = "720p.json"
+[channel.outputs]
+    [channel.outputs.primary.kaltura]
+        rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
+        stream_name = "1_4rcs1evu_1"
+        
+    [channel.outputs.backup.kaltura]
+        rtmp_url = "rtmp://1_4rcs1evu.p.kpublish.kaltura.com:1935/kLive?t=31b030f7"
+        stream_name = "1_4rcs1evu_1"
 
 
 
