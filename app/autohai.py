@@ -3,6 +3,8 @@ import requests
 import toml
 from pprint import pprint
 
+IPADDRESS = "192.168.128.71"
+
 
 def get_config():
     try:
@@ -59,9 +61,9 @@ def encoder_create_channel(ip_address, session_id, channel_name):
     return response.text.encode('utf8')
 
 
-session_id = encoder_login("192.168.130.83", "haiadmin", "manager")
+session_id = encoder_login(IPADDRESS, "haiadmin", "manager")
 
 
-# encoder_logout("192.168.130.83", session_id)
+# encoder_logout(IPADDRESS, session_id)
 
-encoder_create_channel("192.168.130.83", session_id, "Test_Channel_From_API")
+encoder_create_channel(IPADDRESS, session_id, "Test_Channel_From_API")
