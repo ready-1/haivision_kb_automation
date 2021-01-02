@@ -35,11 +35,16 @@ def encoder_login(ip_address, username, password):
     return session_id
 
 
-print(encoder_login("192.168.130.83", "haiadmin", "manager"))
+def encoder_logout(ip_address, session_id):
+    url = "https://" + ip_address + ":1080/ecs/auth.json?Authorization=" + session_id
+    payload = {}
+    headers = {
+        'Authorization': session_id
+    }
+    response = requests.request(
+        "DELETE", url, headers=headers, data=payload, verify=False)
+    return True
 
-# config = get_config()
 
-# channel = read_template_file(
-#     config['channel']['template_filename'])
-
-# pprint(channel)
+session_id = encoder_login("192.168.130.83", "haiadmin", "manager")
+encoder_logout("192.168.130.83", session_id)
